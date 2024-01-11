@@ -203,6 +203,16 @@ public class EmployeesGui extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Fill in all fields!");
             return;
         }
+
+        //prevent the same userIDs in dataTable ----->
+        for (int i = 0; i < dataTable.getRowCount(); i++) {
+            String userid = dataTable.getValueAt(i, 0).toString();
+
+            if (userId.equals(userid)) {
+                JOptionPane.showMessageDialog(this, "Cannot be the same user ID!");
+                return;
+            }    
+        }
         
         //create and save the data in a batch file ----->
         try {
